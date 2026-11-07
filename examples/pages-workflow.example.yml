@@ -1,0 +1,27 @@
+# 尚未安裝。不要在獲准啟用 GitHub Pages 之前把這個檔案放進 .github/workflows/。
+# 放進去之後，若再把 on 改成 push，合併到 main 就會開始部署。
+# 建議的正式做法反而不需要這個 workflow：到 repo Settings → Pages →
+# Deploy from a branch → main → / (root)。本檔只作為備援草稿。
+name: Deploy GitHub Pages
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

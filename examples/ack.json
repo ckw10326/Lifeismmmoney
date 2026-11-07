@@ -1,0 +1,8 @@
+{
+  "ack_notified": [
+    {
+      "id": "example-deal",
+      "content_version": "cv_請改成outbox裡的content_version"
+    }
+  ]
+}

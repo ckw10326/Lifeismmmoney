@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-11-08T12:00:00+08:00",
+  "summary": "範例：只送這筆新優惠，不要重貼舊清單。正式使用前請改掉範例內容。",
+  "upserts": [
+    {
+      "id": "example-deal",
+      "vendor": "範例航空",
+      "name": "這筆只是介面範例，不是真實優惠",
+      "crit": ["② 旅展或旅遊網站年度檔期"],
+      "buy": "2026/12/01 10:00 – 2026/12/03 23:00（台北時間）",
+      "end": null,
+      "travel": "2026/12/10 – 2027/01/31",
+      "route": "範例航線，未查證",
+      "cond": "範例條件",
+      "url": "https://example.com/deal",
+      "src": "介面範例，不可當查證來源"
+    }
+  ],
+  "verify_ids": [],
+  "excluded_add": [],
+  "pending_watch": [],
+  "ack_notified": []
+}
