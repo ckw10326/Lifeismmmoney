@@ -88,7 +88,9 @@ class HistoryTests(unittest.TestCase):
             saved = (ROOT / "snapshots" / name).read_bytes()
             self.assertEqual(fixture, saved)
             self.assertIn(b"min-width:980px", fixture)
-        self.assertNotIn("980px", (ROOT / "css/site.css").read_text(encoding="utf-8"))
+        css = (ROOT / "css/site.css").read_text(encoding="utf-8")
+        self.assertIn("min-width: 980px", css)
+        self.assertIn("overflow-x: auto", css)
         note = next(item for item in self.catalog["checks"] if item["checked_at"].startswith("2026-11-07"))
         self.assertEqual(note["snapshot_html"], "snapshots/promos-20261107-1225.html")
         self.assertIn("不是用現在的模板重產", note["snapshot_note"])
@@ -299,7 +301,9 @@ class OutputTests(unittest.TestCase):
             self.assertNotIn("<script>alert", body)
             self.assertNotIn("<img", body)
             self.assertNotIn(".innerHTML", body)
-            self.assertNotIn("980px", body)
+            self.assertIn("代表航線與最低價", body)
+            self.assertIn("min-width: 980px", body)
+            self.assertIn('class="wrap"', body)
             self.assertIn("candidate_only_not_sent", (root / first["outbox_relpath"]).read_text(encoding="utf-8"))
             second = run_daily(["apply", str(delta_path), "--root", str(root), "--catalog", "data/catalog.json"])
             self.assertEqual(second["status"], "duplicate")
@@ -310,9 +314,12 @@ class OutputTests(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertNotIn(".innerHTML", js)
         self.assertNotIn("insertAdjacentHTML", js)
-        self.assertNotIn("<table", html)
-        self.assertNotIn("980px", (ROOT / "css/site.css").read_text(encoding="utf-8"))
-        self.assertIn("grid-template-columns: 1fr", (ROOT / "css/site.css").read_text(encoding="utf-8"))
+        self.assertIn("代表航線與最低價", js)
+        self.assertNotIn("改以卡片", js)
+        self.assertIn('id="summary"', html)
+        css = (ROOT / "css/site.css").read_text(encoding="utf-8")
+        self.assertIn("min-width: 980px", css)
+        self.assertIn("overflow-x: auto", css)
 
     def test_js_view_matches_python_and_subpath(self):
         catalog = json.loads((ROOT / "data/catalog.json").read_text(encoding="utf-8"))
@@ -443,7 +450,7 @@ class RenderHelperTests(unittest.TestCase):
         body = render(updated, "2026-11-08T12:00:00+08:00", css_text="body{color:#111}")
         self.assertIn("2026-11-08T12:00:00+08:00", body)
         self.assertIn("&lt;b&gt;粗體&lt;/b&gt;", body)
-        self.assertNotIn("<b>", body)
+        self.assertNotIn("<b>粗體</b>", body)
 
 
 if __name__ == "__main__":
