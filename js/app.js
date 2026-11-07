@@ -9,6 +9,7 @@
   }
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   var QUALIFIED = ["vendor", "name", "buy", "travel", "route", "cond", "url"];
+  var HEADERS = ["業者", "活動名稱", "符合標準", "促銷購買期間", "適用出發期間", "代表航線與最低價", "重點條件", "官方連結"];
 
   function isQualified(deal) {
     if (deal.observe) return false;
@@ -32,6 +33,37 @@
       return "";
     }
     return get("year") + "-" + get("month") + "-" + get("day");
+  }
+
+  function shortTaipei(iso) {
+    if (!iso) return "";
+    var parsed = new Date(iso);
+    if (Number.isNaN(parsed.getTime())) return String(iso);
+    var parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Taipei",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+    }).formatToParts(parsed);
+    function get(type) {
+      for (var i = 0; i < parts.length; i += 1) {
+        if (parts[i].type === type) return parts[i].value;
+      }
+      return "";
+    }
+    return get("year") + "-" + get("month") + "-" + get("day") + " " + get("hour") + ":" + get("minute");
+  }
+
+  function daysLeft(deal, asOfIso) {
+    if (!deal.end || !/^\d{4}-\d{2}-\d{2}$/.test(deal.end)) return null;
+    var today = taipeiDate(Date.parse(asOfIso));
+    var start = Date.parse(today + "T00:00:00Z");
+    var end = Date.parse(deal.end + "T00:00:00Z");
+    if (!Number.isFinite(start) || !Number.isFinite(end)) return null;
+    return Math.round((end - start) / 86400000);
   }
 
   function saleFlags(deal, asOfIso) {
@@ -98,101 +130,105 @@
     return node;
   }
 
-  function formatWhen(iso) {
-    if (!iso) return "沒有單獨的查證時間";
-    var parsed = new Date(iso);
-    if (Number.isNaN(parsed.getTime())) return String(iso);
-    var shown = new Intl.DateTimeFormat("zh-Hant-TW", {
-      timeZone: "Asia/Taipei",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      hourCycle: "h23",
-    }).format(parsed);
-    return shown + "（台北時間）／原始紀錄 " + iso;
+  function tdText(value) {
+    return el("td", null, value || "");
   }
 
-  function windowText(deal) {
-    var windowInfo = deal.window || {};
-    if (windowInfo.basis === "unresolved" || !windowInfo.purchase_end) {
-      return "沒有單一、完整、含時區的購買結束時間，不自動下架。";
-    }
-    var basis = windowInfo.basis === "explicit"
-      ? "明確記入"
-      : "由購買期間原文解析，原文仍以上方為準";
-    return "開始 " + (windowInfo.purchase_start || "未填") + "；結束 " + windowInfo.purchase_end + "（" + basis + "）";
-  }
+  function appendRow(tbody, deal, asOfIso, isNew) {
+    var n = daysLeft(deal, asOfIso);
+    var tr = document.createElement("tr");
+    if (isNew) tr.className = "hl";
+    else if (n !== null && n >= 0 && n <= 3) tr.className = "ur";
 
-  function card(deal, flags) {
-    var node = el("article", "card");
-    node.appendChild(el("h3", null, deal.vendor || "未填業者"));
-    node.appendChild(el("p", null, deal.name || ""));
-    if (flags.upcoming) node.appendChild(el("p", "badge", "尚未開賣"));
-    if (flags.date_only_past) {
-      node.appendChild(el("p", "badge", "end 只有日期（" + (deal.end || "") + "），沒有時分與時區，因此仍留在現行清單。"));
-    }
-    var fields = el("dl", "fields");
-    [
-      ["業者", deal.vendor],
-      ["活動名稱", deal.name],
-      ["符合標準", (deal.crit || []).join("、")],
-      ["促銷購買期間", deal.buy],
-      ["適用出發期間", deal.travel],
-      ["代表航線與最低價", deal.route],
-      ["重點條件", deal.cond],
-      ["官方連結", deal.url],
-      ["資料來源", deal.src],
-      ["此筆最後查證", formatWhen(deal.last_verified_at)],
-      ["下架判斷", windowText(deal)],
-    ].forEach(function (pair) {
-      fields.appendChild(el("dt", null, pair[0]));
-      var value = el("dd");
-      value.textContent = pair[1] ? String(pair[1]) : "（空）";
-      if (pair[0] === "官方連結" && safeHref(pair[1])) {
-        value.appendChild(document.createTextNode(" "));
-        var link = el("a", null, "開啟");
-        link.href = safeHref(pair[1]);
-        link.rel = "noopener noreferrer";
-        link.target = "_blank";
-        value.appendChild(link);
-      }
-      fields.appendChild(value);
+    var vendor = document.createElement("td");
+    var name = document.createElement("b");
+    name.textContent = deal.vendor || "";
+    vendor.appendChild(name);
+    if (isNew) vendor.appendChild(el("span", "tag new", "新"));
+    if (n === 0) vendor.appendChild(el("span", "tag urgent", "今天截止"));
+    else if (n !== null && n > 0 && n <= 3) vendor.appendChild(el("span", "tag urgent", "剩 " + n + " 天"));
+    tr.appendChild(vendor);
+    tr.appendChild(tdText(deal.name));
+
+    var crit = document.createElement("td");
+    (deal.crit || []).forEach(function (item, index) {
+      if (index) crit.appendChild(document.createElement("br"));
+      crit.appendChild(document.createTextNode(item));
     });
-    node.appendChild(fields);
-    (deal.warnings || []).concat(deal.review_notes || []).forEach(function (warning) {
-      node.appendChild(el("p", "warn", warning));
-    });
-    return node;
+    tr.appendChild(crit);
+    tr.appendChild(tdText(deal.buy));
+    tr.appendChild(tdText(deal.travel));
+    tr.appendChild(tdText(deal.route));
+
+    var cond = document.createElement("td");
+    cond.appendChild(document.createTextNode(deal.cond || ""));
+    if (deal.src) cond.appendChild(el("div", "src", "來源：" + deal.src));
+    tr.appendChild(cond);
+
+    var linkCell = document.createElement("td");
+    var href = safeHref(deal.url);
+    if (href) {
+      var link = el("a", null, "活動頁");
+      link.href = href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      linkCell.appendChild(link);
+    } else if (deal.url) {
+      linkCell.textContent = String(deal.url);
+    }
+    tr.appendChild(linkCell);
+    tbody.appendChild(tr);
   }
 
-  function section(title, id, deals, emptyText, asOfIso) {
+  function tableFor(deals, asOfIso, isNew) {
+    var wrap = el("div", "wrap");
+    var table = document.createElement("table");
+    var head = document.createElement("tr");
+    HEADERS.forEach(function (label) {
+      head.appendChild(el("th", null, label));
+    });
+    var thead = document.createElement("thead");
+    thead.appendChild(head);
+    var tbody = document.createElement("tbody");
+    deals.forEach(function (deal) {
+      appendRow(tbody, deal, asOfIso, isNew);
+    });
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    return wrap;
+  }
+
+  function section(title, id, deals, emptyText, asOfIso, isNew) {
     var node = el("section");
     node.id = id;
     node.appendChild(el("h2", null, title));
-    if (!deals.length) {
-      node.appendChild(el("p", null, emptyText));
-      return node;
-    }
-    var cards = el("div", "cards");
-    deals.forEach(function (deal) {
-      cards.appendChild(card(deal, saleFlags(deal, asOfIso)));
-    });
-    node.appendChild(cards);
+    if (!deals.length) node.appendChild(el("p", null, emptyText));
+    else node.appendChild(tableFor(deals, asOfIso, isNew));
     return node;
+  }
+
+  function fillSummary(summary, catalog, newDeals) {
+    while (summary.firstChild) summary.removeChild(summary.firstChild);
+    var last = catalog.last_successful_check;
+    if (newDeals.length) {
+      summary.appendChild(document.createTextNode("新優惠：" + newDeals.map(function (deal) {
+        return (deal.vendor || "") + " " + (deal.name || "");
+      }).join("；") + "。"));
+    } else {
+      summary.appendChild(document.createTextNode("目前沒有尚未通知的新優惠。"));
+    }
+    summary.appendChild(document.createElement("br"));
+    var when = last ? shortTaipei(last.checked_at) + "（台北時間）" : "尚無檢查紀錄";
+    summary.appendChild(el("span", "note", "查詢時間：" + when));
   }
 
   function render(catalog, asOfIso, documentRef) {
     var app = documentRef.getElementById("app");
-    var checkLine = documentRef.getElementById("check-line");
+    var summary = documentRef.getElementById("summary");
     var note = documentRef.getElementById("data-note");
     while (app.firstChild) app.removeChild(app.firstChild);
-    var last = catalog.last_successful_check;
-    checkLine.textContent = last
-      ? "最後成功查證：" + formatWhen(last.checked_at) + "。重新整理這頁不會把查證時間改成現在。"
-      : "資料檔裡還沒有成功的檢查紀錄。";
-    note.textContent = catalog.data_note || "";
+    if (note) note.textContent = catalog.data_note || "";
     var byId = {};
     (catalog.deals || []).forEach(function (deal) {
       byId[deal.id] = deal;
@@ -201,97 +237,58 @@
     function take(ids) {
       return ids.map(function (id) { return byId[id]; });
     }
-    var criteria = el("section");
-    criteria.appendChild(el("h2", null, "四條判斷標準（維持不變）"));
-    var list = el("ol");
-    (catalog.criteria || []).forEach(function (item) {
-      list.appendChild(el("li", null, item));
-    });
-    criteria.appendChild(list);
-    app.appendChild(criteria);
+    var fresh = take(model.sections.new);
+    if (summary) fillSummary(summary, catalog, fresh);
+    app.appendChild(section("🆕 新優惠", "new", fresh, "這次沒有新優惠。", asOfIso, true));
     app.appendChild(section(
-      "新優惠／重大更新",
-      "new",
-      take(model.sections.new),
-      "目前沒有尚未通知的新優惠或重大更新。打開頁面不會把舊優惠變成今天的新發現。",
-      asOfIso
-    ));
-    app.appendChild(section(
-      "目前仍有效",
+      "📌 目前仍在進行、之前已提醒過",
       "current",
       take(model.sections.current),
-      "目前沒有仍在購買期內、而且已經通知過的優惠。",
-      asOfIso
+      "目前沒有仍在清單上的舊優惠。",
+      asOfIso,
+      false
     ));
-    var watch = section(
-      "觀察中",
-      "watch",
-      take(model.sections.watch),
-      "沒有缺欄位或標成觀察的優惠。",
-      asOfIso
-    );
-    var openItems = (catalog.pending_watch || []).filter(function (item) {
-      return item.status === "open";
-    });
-    if (openItems.length) {
-      var openList = el("ul");
-      openItems.forEach(function (item) {
-        openList.appendChild(el("li", null, item.text));
-      });
-      watch.appendChild(openList);
-    }
-    var closedItems = (catalog.pending_watch || []).filter(function (item) {
-      return item.status !== "open";
-    });
-    if (closedItems.length) {
-      watch.appendChild(el("h3", null, "先前觀察，原文保留"));
-      var closedList = el("ul");
+    var watch = el("section");
+    watch.id = "watch";
+    watch.appendChild(el("h2", null, "👀 持續觀察中"));
+    var watchDeals = take(model.sections.watch);
+    if (watchDeals.length) watch.appendChild(tableFor(watchDeals, asOfIso, false));
+    var openItems = (catalog.pending_watch || []).filter(function (item) { return item.status === "open"; });
+    var closedItems = (catalog.pending_watch || []).filter(function (item) { return item.status !== "open"; });
+    if (!watchDeals.length && !openItems.length) watch.appendChild(el("p", null, "目前沒有觀察項目。"));
+    if (openItems.length || closedItems.length) {
+      var list = document.createElement("ul");
+      openItems.forEach(function (item) { list.appendChild(el("li", null, item.text)); });
       closedItems.forEach(function (item) {
-        closedList.appendChild(el("li", null, item.note ? item.text + "（" + item.note + "）" : item.text));
+        list.appendChild(el("li", null, item.note ? item.text + "（" + item.note + "）" : item.text));
       });
-      watch.appendChild(closedList);
+      watch.appendChild(list);
     }
     app.appendChild(watch);
     app.appendChild(section(
-      "購買期已結束（仍保留）",
+      "購買期已結束（資料仍保留）",
       "ended",
       take(model.sections.ended),
-      "沒有已用完整時區時間判定結束的優惠。只有日期的項目不會出現在這裡。",
-      asOfIso
+      "沒有已用完整時區時間判定結束的優惠。",
+      asOfIso,
+      false
     ));
     var excluded = el("section");
     excluded.id = "excluded";
     excluded.appendChild(el("h2", null, "有看到但未列入"));
-    var excludedList = el("ul");
+    var excludedList = document.createElement("ul");
     (catalog.excluded || []).forEach(function (item) {
       excludedList.appendChild(el("li", null, item.item + "：" + item.reason));
     });
     excluded.appendChild(excludedList);
     app.appendChild(excluded);
-    var checks = el("section");
-    checks.id = "checks";
-    checks.appendChild(el("h2", null, "檢查紀錄"));
-    var checkList = el("ul");
-    (catalog.checks || []).forEach(function (item) {
-      var line = el("li");
-      line.appendChild(documentRef.createTextNode((item.summary || item.checked_at) + " "));
-      if (item.snapshot_note) line.appendChild(el("span", "note", item.snapshot_note));
-      if (item.snapshot_html) {
-        var link = el("a", null, " 原始快照");
-        link.href = item.snapshot_html;
-        line.appendChild(link);
-      }
-      checkList.appendChild(line);
-    });
-    checks.appendChild(checkList);
-    app.appendChild(checks);
   }
 
   function mount(documentRef) {
     var app = documentRef.getElementById("app");
-    var checkLine = documentRef.getElementById("check-line");
+    var summary = documentRef.getElementById("summary");
     var dataUrl = catalogUrl(globalThis.location.href);
-    checkLine.textContent = "正在讀取 " + dataUrl;
+    if (summary) summary.textContent = "正在讀取資料…";
     fetch(dataUrl)
       .then(function (response) {
         if (!response.ok) throw new Error(String(response.status));
@@ -301,8 +298,8 @@
         render(catalog, new Date().toISOString(), documentRef);
       })
       .catch(function () {
-        app.textContent = "";
-        checkLine.textContent = "讀不到 " + dataUrl + "。請用網站伺服器開啟這個目錄（含 GitHub Pages 子路徑）；不要用檔案總管直接點開 HTML。";
+        if (app) app.textContent = "";
+        if (summary) summary.textContent = "讀不到 " + dataUrl + "。請用網站伺服器開啟這個目錄。";
       });
   }
 
