@@ -1,0 +1,1176 @@
+{
+  "schema_version": 1,
+  "title": "Life is money 旅遊重大優惠",
+  "criteria": [
+    "航空公司全航線大促",
+    "旅展或旅遊網站年度檔期",
+    "比平常便宜30%以上",
+    "廉航單程未稅NT$1000以下"
+  ],
+  "rules": {
+    "expiry": "只有 window.purchase_end 是帶時區的完整時間時，as_of >= purchase_end 才離開現行清單。只有日期、只有鐘點但沒寫時區、或多個時區並存，都不自動下架。",
+    "upcoming": "purchase_start 尚未到的優惠仍留在現行清單，並標成尚未開賣。",
+    "identity": "id 穩定。content_version 不含查詢時間、倒數與 new/alerted_update。",
+    "notify": "工具只寫出通知候選，不發送訊息。notified_version 只在 ack 後才推進。",
+    "history": "優惠、排除項、觀察句與檢查紀錄都不刪除。"
+  },
+  "data_note": "現行優惠原文來自附件 latest.json（檔內查詢時間 2026-11-07 12:25）以及初始腳本裡、後來未再出現在 latest.json 的越捷 10 條航線。每一筆的最後查證時間是該筆內容在附件中最後一次被寫下的時間，不是網頁開啟日，也不代表 2026-11-07 有把所有舊優惠重查一遍。10/27 沒有檢查紀錄，未補。11/01 與 11/05 的紀錄寫明未產生 HTML，未補造快照。購買期間裡的星期若與日曆不符，只產生警告，不改原文。",
+  "deals": [
+    {
+      "id": "ak-itf-2026",
+      "vendor": "亞洲航空 AirAsia",
+      "name": "ITF 線上旅展冬季促銷",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "即日起 – 2026/11/08",
+      "end": "2026-11-08",
+      "travel": "2026/11/09 – 2027/02/06",
+      "route": "高雄–馬尼拉 單程含稅 2,290 起；台北–馬尼拉 2,410；高雄–曼谷 2,473；台北–亞庇 2,806、曼谷 2,900；台北–福岡 4,715、大阪 4,821",
+      "cond": "單程含稅價；限量；MOVE App 訂指定航班可免一次改期手續費（需補差價）；日本線價格偏一般",
+      "url": "https://www.airasia.com/zh/tw",
+      "src": "AirAsia 新聞稿（Public 平台）、PChome、理財周刊；官方活動頁未開啟",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_df43c76c3843ad7a",
+      "notified_version": "cv_df43c76c3843ad7a",
+      "first_seen_at": "2026-11-03T12:20:00+08:00",
+      "last_verified_at": "2026-11-03T12:20:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "br-itf-2026",
+      "vendor": "長榮航空",
+      "name": "ITF 線上旅展 精選航線 82 折起",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "2026/10/21 – 2026/11/15 23:59",
+      "end": "2026-11-15",
+      "travel": "2026/10/21 – 2027/06/30（依航線）",
+      "route": "桃園–香港 單程未稅 3,280 起；桃園–沖繩 單程未稅 6,640 起；松山–羽田 11,305 起",
+      "cond": "限官網／App、台灣出發；不可與聯名卡官網優惠併用；購票抽商務艙機票",
+      "url": "https://promotion.evaair.com/tw/online-travel-fair/index.html",
+      "src": "中央社、自由時報（長榮官網擋爬）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_7963442001d775d7",
+      "notified_version": "cv_7963442001d775d7",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "購買期間有鐘點，但沒有寫時區，不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "ci-itf-2026",
+      "vendor": "中華航空",
+      "name": "ITF 線上旅展 精選航線 76 折起",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "2026/10/16 – 2026/11/21 23:59",
+      "end": "2026-11-21",
+      "travel": "依航線，多為 2026/10/16 – 2027/06 下旬（春節前後排除）",
+      "route": "香港 未稅 3,240 起；宿霧 未稅 3,354 起；釜山／沖繩 未稅 5,994 起；雪梨 單程未稅 16,188 起",
+      "cond": "未稅價；華夏會員購票登錄抽獎（最高 6 張區域線商務艙）",
+      "url": "https://2026itf.china-airlines.com/",
+      "src": "華航 ITF 官網、優惠說明 PDF、中央社",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_8290b9d4fec57233",
+      "notified_version": "cv_8290b9d4fec57233",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "購買期間有鐘點，但沒有寫時區，不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "cola-tk-2026",
+      "vendor": "可樂旅遊 × 土耳其航空",
+      "name": "土航全航線 88 折起（獨家）",
+      "crit": [
+        "② 旅遊網站年度檔期"
+      ],
+      "buy": "2026/10/13 – 2026/11/13",
+      "end": "2026-11-13",
+      "travel": "至 2027/12/31",
+      "route": "經伊斯坦堡轉機往歐洲、中東、非洲（未公布最低價）",
+      "cond": "購票可抽台北–伊斯坦堡來回機票；10/17 一日加碼已結束",
+      "url": "https://www.ctwant.com/article/501796/",
+      "src": "CTWANT、食尚玩家",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_f2221f80a2969dd0",
+      "notified_version": "cv_f2221f80a2969dd0",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "cx-itf-2026",
+      "vendor": "國泰航空",
+      "name": "線上旅展 70+ 航點 8 折起",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "2026/10/16 – 2026/11/13",
+      "end": "2026-11-13",
+      "travel": "至 2027/09/30（2027/02/03–02/07 不適用）",
+      "route": "台北–香港 經濟艙 TWD 7,674 起；高雄–香港 來回含稅 7,450 起；台北–東京 來回含稅 13,433 起",
+      "cond": "限台北、高雄出發；會員碼 CXITF500（亞洲每張折 500，限 2,400 張）／CXITF1000（長程滿 2 萬折 1,000，限 900 筆）",
+      "url": "https://yenlabaero.com/cathay-pacific-online-travel-fair-2026",
+      "src": "顏究所、今周刊（國泰官網未開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_984c092561264b88",
+      "notified_version": "cv_984c092561264b88",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "ez-itf-2026",
+      "vendor": "易遊網 ezTravel",
+      "name": "ITF 線上旅展「超心動$100貨公司」（與小心臟聯名）",
+      "crit": [
+        "② 旅遊網站年度檔期",
+        "④ 破盤價：100 元機票、雙11 單程 1,111 元一口價"
+      ],
+      "buy": "2026/10/28 – 2026/11/11；100 元機票平日 11:00 限量搶（10/28 北海道、首爾已搶過；11/04 沖繩、曼谷）；11/11 13:00 雙11 大阪、釜山單程 1,111 元",
+      "end": "2026-11-11",
+      "travel": "依各限量商品頁公告（航空公司、航班、出發日未公布）",
+      "route": "沖繩、曼谷機票 100 元（11/04 11:00）；大阪、釜山單程一口價 1,111 元（11/11 13:00）；另有航空公司旅展票最低 75 折起，如越洋航空台北–沖繩來回含稅 7,066 起、星宇宿霧 8,071 起、長榮胡志明市 9,355 起、華航曼谷 9,688 起",
+      "cond": "全部限量秒殺，指定航班；是否含稅、含行李未公布；10/28、11/04 10:00 另可搶全站最高現折 1,000 元折扣碼；滙豐卡碼 26hsbcitf（App 滿 6,000 折 800，至 11/11，廉航不適用）",
+      "url": "https://www.eztravel.com.tw/activity/ITF/promo/",
+      "src": "TVBS、聯合新聞網、工商時報、三立、窩客島 10/27–10/28 報導（易遊網新聞稿）；官方頁擋爬未能開啟",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_2939306e6524ed1d",
+      "notified_version": "cv_2939306e6524ed1d",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-31T12:23:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": [
+        {
+          "content_version": "cv_34864a02294dc69b",
+          "recorded_at": "2026-10-31T12:23:00+08:00",
+          "content": {
+            "vendor": "易遊網 ezTravel",
+            "name": "ITF 線上旅展「全民普發 折扣放大節」",
+            "crit": [
+              "② 旅遊網站年度檔期"
+            ],
+            "buy": "進行中（截止日待確認）",
+            "end": null,
+            "travel": "待確認",
+            "route": "宣稱狂撒 300 萬折扣碼、5 折券；機票碼如 flight300（週三 App 滿 6,000 折 300）、26hsbcitf（滙豐卡 App 滿 6,000 折 800，10/28–11/11，廉航不適用）",
+            "cond": "官方活動頁未列日期與機票細節，待確認",
+            "url": "https://promo.eztravel.com.tw/uglyrabbit-37368",
+            "src": "易遊網活動頁（已開啟）、滙豐活動頁摘要",
+            "purchase_start": null,
+            "purchase_end": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "it-itf-2026",
+      "vendor": "台灣虎航",
+      "name": "2026 ITF 線上旅展 全航線單程未稅 999 元起",
+      "crit": [
+        "① 航空公司全航線大促",
+        "② 旅展年度檔期",
+        "④ 廉航單程未稅 ≤ NT$1,000"
+      ],
+      "buy": "2026/11/06（五）10:00 – 2026/11/09（一）23:59",
+      "end": "2026-11-09",
+      "travel": "2026/11/06 – 2027/10/30（部分航班至 2027/03/27）",
+      "route": "台北／台中–沖繩、台北–石垣島 單程未稅 999 起；仁川、濟州 1,199 起；釜山 1,399 起；大阪、福岡 1,799 起；東京成田／羽田、名古屋 1,899 起；札幌 2,299 起；峴港 1,799 起",
+      "cond": "單程未稅、不含託運行李；優惠碼 IT700CJU（濟州再折 700）、IT500PUS（釜山再折 500），限來回、旅遊期至 2027/06/30；旅展攤位 J709 出示行程單送桌曆",
+      "url": "https://static.tigerairtw.com/www/events/2611ITF/",
+      "src": "虎航官網新聞稿 11/02、NOWnews、聯合新聞網",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_2d844519ee296469",
+      "notified_version": "cv_2d844519ee296469",
+      "first_seen_at": "2026-11-03T12:20:00+08:00",
+      "last_verified_at": "2026-11-03T12:20:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "購買期間有鐘點，但沒有寫時區，不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "itf-2026",
+      "vendor": "ITF 台灣國際旅展",
+      "name": "2026 ITF 實體旅展（南港展覽館1館）",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "2026/11/06（五）12:00–18:00；11/07–11/09 10:00–18:00",
+      "end": "2026-11-09",
+      "travel": "依各參展業者",
+      "route": "12 家航空參展：華航、長榮、星宇、虎航、國泰、日航、樂桃、星悅、天馬、阿提哈德、太陽富國、ANA",
+      "cond": "門票 NT$200（預售 NT$180 至 11/05）；虎航旅展票價尚未公布，可能在展期公布",
+      "url": "https://www.taiwanitf.org.tw/Information3",
+      "src": "ITF 官網、中央社 10/21",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_9a497f6fdbba0e70",
+      "notified_version": "cv_9a497f6fdbba0e70",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "end 欄為 2026-11-09，購買期間原文沒有同一個完整日期。兩邊都保留，未改寫。",
+        "購買期間有鐘點，但沒有寫時區，不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "jl-itf-2026",
+      "vendor": "日本航空",
+      "name": "東京、名古屋、沖繩 8 折起",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "至 2026/11/13",
+      "end": "2026-11-13",
+      "travel": "至 2027/03/23",
+      "route": "台北–沖繩 來回含稅 7,639 起；名古屋 13,144 起；東京 13,859 起",
+      "cond": "經濟艙含 2 件託運行李",
+      "url": "https://www.businesstoday.com.tw/article/category/183031/post/202610190027/",
+      "src": "今周刊（官方頁未開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_95a477487b32a7d1",
+      "notified_version": "cv_95a477487b32a7d1",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "jx-itf-2026",
+      "vendor": "星宇航空",
+      "name": "ITF 線上旅展 精選航線 85 折起",
+      "crit": [
+        "② 旅展年度檔期",
+        "① 航空公司大促（官方稱全航線）"
+      ],
+      "buy": "2026/10/15 – 2026/11/23",
+      "end": "2026-11-23",
+      "travel": "2026/10/22 起，依航線（最長至 2027/06/30，春節不適用）",
+      "route": "台北–宿霧 來回含稅 8,105 起；熊本 10,679 起；富國島 11,107 起；神戶 12,334 起",
+      "cond": "台北、台中、高雄出發；玉山聯名卡碼已於 10/19 結束；受油價影響甜價不多",
+      "url": "https://latestnews.starlux-airlines.com/zh-TW/about-us/travel-advisories/advisories/latest-news/2026_ITF_promotion",
+      "src": "星宇官網公告（已開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_bd55c158ec36b2af",
+      "notified_version": "cv_bd55c158ec36b2af",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "lion-itf-2026",
+      "vendor": "雄獅旅遊",
+      "name": "ITF 線上旅展",
+      "crit": [
+        "② 旅遊網站年度檔期"
+      ],
+      "buy": "2026/10/12 – 2026/11/09（每天 11:00 開搶）",
+      "end": "2026-11-09",
+      "travel": "2026/10/12 – 2027/12/31（依商品）",
+      "route": "機票：週三、週六國外機票滿 5,000 折 400；週日滿 10,000 折 400；中信卡國際機票滿額折 1,000",
+      "cond": "主力是團體／機加酒（滿 3 萬折 3,000、滿 5 萬折 5,000 限量）；純機票折扣力度小",
+      "url": "https://lifegoods.cc/liontravel-itf/",
+      "src": "部落客整理、CTWANT（官方頁未開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_31a2bb52181eed91",
+      "notified_version": "cv_31a2bb52181eed91",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "nx-itf-2026",
+      "vendor": "澳門航空",
+      "name": "ITF 台灣國際旅展 台灣出發澳門航線促銷",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "2026/10/20 – 2026/11/30（開票日）",
+      "end": "2026-11-30",
+      "travel": "2026/11/01 – 2027/06/30",
+      "route": "台北／台中／高雄⇄澳門 經濟艙來回未稅 NT$2,500 起（部落客實查台北來回含稅約 6,652、高雄約 6,648）；商務艙來回未稅 13,500 起",
+      "cond": "經濟艙含 1 件 32 公斤託運行李（飛悅經濟艙 2 件共 50 公斤）；含稅價以官網查詢為準；台北出發另收每航段 USD10 訂位服務費（旅行社通路）",
+      "url": "https://www.travel4u.com.tw/flight/airline/campaign/NX/49/",
+      "src": "山富旅遊澳門航空專案頁（已開啟）、可樂旅遊專區、吃貨瑪莉整理",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_5246fc3075951bb3",
+      "notified_version": "cv_5246fc3075951bb3",
+      "first_seen_at": "2026-11-02T12:18:00+08:00",
+      "last_verified_at": "2026-11-02T12:18:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "nz-itf-2026",
+      "vendor": "紐西蘭航空",
+      "name": "年度線上旅展",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "至 2026/11/09",
+      "end": "2026-11-09",
+      "travel": "待確認（以官網為準）",
+      "route": "台北直飛奧克蘭 經濟艙來回未稅 NT$29,500 起",
+      "cond": "指定票價可免費延伸至基督城或威靈頓",
+      "url": "https://supertaste.tvbs.com.tw/pack/362119",
+      "src": "食尚玩家整理（官方頁未開啟，待確認）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_daab07c6c0ca7b1f",
+      "notified_version": "cv_daab07c6c0ca7b1f",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "原文含「待確認」，維持原文，未補齊。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "settour-itf-2026",
+      "vendor": "東南旅遊",
+      "name": "2026 ITF 線上旅展（每週主題）",
+      "crit": [
+        "② 旅遊網站年度檔期"
+      ],
+      "buy": "2026/10/08 – 2026/11/13（待確認）",
+      "end": "2026-11-13",
+      "travel": "待確認",
+      "route": "港澳、日韓機票現折 399（待確認）；機加酒滿 3 萬折 1,500",
+      "cond": "官方頁擋爬（403），內容來自搜尋摘要，待確認",
+      "url": "https://www.settour.com.tw/act/mkt/itf_online/fit.html",
+      "src": "搜尋摘要（官網 403）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_15ffed2b57319b66",
+      "notified_version": "cv_15ffed2b57319b66",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "原文含「待確認」，維持原文，未補齊。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "sq-itf-2026",
+      "vendor": "新加坡航空（含酷航航點）",
+      "name": "ITF 線上旅展 最高 8 折",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "至 2026/11/12（開始日待確認）",
+      "end": "2026-11-12",
+      "travel": "依航點不同（待確認）",
+      "route": "台北–新加坡 來回含稅 11,088 起；峇里島 10,628 起；雪梨 25,158 起",
+      "cond": "需新加坡轉機；會員萬事達卡付款可抽周杰倫演唱會票",
+      "url": "https://www.businesstoday.com.tw/article/category/183031/post/202610190027/",
+      "src": "今周刊、食尚玩家（官方頁未開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_42248c3634fddb3a",
+      "notified_version": "cv_42248c3634fddb3a",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "原文含「待確認」，維持原文，未補齊。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "tr-itf-2026",
+      "vendor": "酷航 Scoot",
+      "name": "ITF 線上旅展",
+      "crit": [
+        "② 旅展年度檔期"
+      ],
+      "buy": "2026/10/22 – 2026/11/12",
+      "end": "2026-11-12",
+      "travel": "待確認（以官網為準）",
+      "route": "台北⇄東京、北海道（札幌）、首爾、新加坡；最低價未公布（近期參考：台北–東京單程含稅 3,799、札幌單程含稅 5,099）",
+      "cond": "手提行李 10kg（廉航中最多）；不含託運；官方活動頁未開啟、細節待確認",
+      "url": "https://www.flyscoot.com/zh-tw",
+      "src": "吃貨瑪莉整理、搜尋摘要（官方頁未開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_390782ad9906221f",
+      "notified_version": "cv_390782ad9906221f",
+      "first_seen_at": "2026-11-02T12:18:00+08:00",
+      "last_verified_at": "2026-11-02T12:18:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "原文含「待確認」，維持原文，未補齊。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "trip-1111-2026",
+      "vendor": "Trip.com 台灣站",
+      "name": "雙11旅展 機票單程 $11 起／支付通路 $999 起",
+      "crit": [
+        "② 旅遊網站年度檔期",
+        "④ 破盤價：單程 $11、$999"
+      ],
+      "buy": "2026/11/11（二）00:00 – 2026/11/14（五）23:59；一口價機票 11/11 22:00 App 開搶；玉山 Wallet 日本線 $999 於 11/11 10:00、街口東南亞 $999 於 18:00、星展日韓 $999 於 20:00",
+      "end": "2026-11-14",
+      "travel": "一口價機票出發約 2026/11/11 – 2027/03/31（以 App 頁面為準）",
+      "route": "單程 $11：台北–東京／沖繩／釜山／首爾、捷星高雄–東京；另有星宇香港來回 $3,999、曼谷 $5,999、大阪 $8,999 等；支付通路日本／東南亞／日韓指定航線 $999 起；每日一口價機票共約 56 張",
+      "cond": "一口價限台灣站 App、會員、成人票；每用戶最多 2 筆、每筆 1 人；不可與其他折扣併用；限量秒殺；行李依航空公司；實際以結帳頁為準",
+      "url": "https://tw.trip.com/sale/w/4497/mega-sale.html",
+      "src": "Trip.com 台灣站官方雙11活動頁條款、Trip.com Official 優惠碼部落格、KB56 整理（對照官方條款）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_02e4dd52766eb384",
+      "notified_version": "cv_02e4dd52766eb384",
+      "first_seen_at": "2026-11-07T12:25:00+08:00",
+      "last_verified_at": "2026-11-07T12:25:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "星期不一致：原文「2026/11/11（二）」標（二），該日實際為星期三。保留原文，未改寫。",
+        "星期不一致：原文「2026/11/14（五）」標（五），該日實際為星期六。保留原文，未改寫。",
+        "購買期間有鐘點，但沒有寫時區，不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "vietjet-10routes-202610",
+      "vendor": "越捷航空 VietJet",
+      "name": "慶10條新航線開通 票價 NT$0 起",
+      "crit": [
+        "④ 廉航單程未稅 ≤ NT$1,000"
+      ],
+      "buy": "2026/10/26 01:00 – 2026/11/01 23:59（台北時間）",
+      "end": "2026-11-01",
+      "travel": "2026/11/01 – 2027/10/31（夏季、節假日、春節等旺季除外）",
+      "route": "台南→河內 單程未稅 TWD 110 起（官網頁面「已看到」價）；台北/台中/高雄⇄胡志明市、河內，台北⇄富國島 NT$0 起（未稅）",
+      "cond": "未含稅費與附加費；促銷票售罄可能提前結束；改票需付費",
+      "url": "https://www.vietjetair.com/zh-tw/flight-tickets/celebrate-10-new-routes-lets-vietjet-tickets-price-from-just-1-october-26th-november-1st-2026",
+      "src": "越捷官網活動頁（WebSearch 摘錄，WebFetch 逾時）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_461d403c7d7da4bc",
+      "notified_version": "cv_461d403c7d7da4bc",
+      "first_seen_at": "2026-10-29T12:30:00+08:00",
+      "last_verified_at": "2026-10-29T12:30:00+08:00",
+      "window": {
+        "purchase_start": "2026-10-26T01:00:00+08:00",
+        "purchase_end": "2026-11-01T23:59:00+08:00",
+        "basis": "parsed_buy"
+      },
+      "warnings": [],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "vj-doubleday-20261110",
+      "vendor": "越捷航空 VietJet",
+      "name": "雙日超級優惠 台灣航線單程未稅 NT$0 起",
+      "crit": [
+        "① 航空公司全航線大促（雙日檔）",
+        "④ 廉航單程未稅 ≤ NT$1,000"
+      ],
+      "buy": "2026/11/10（一）01:00 – 2026/11/13（三）00:00（台北時間；官網標 UTC+7 為 11/10 00:00–11/12 23:00）",
+      "end": "2026-11-12",
+      "travel": "2026/12/01 – 2027/05/31（節假日、春節、旺季除外，以官網為準）",
+      "route": "台灣出發／抵達越南：台北／台中／高雄⇄胡志明市；台北／台中／高雄／台南⇄河內；台北⇄富國島。單程未稅 NT$0 起（Eco 經濟艙）",
+      "cond": "單程未稅，另加機場稅與附加費；限官網／App／微信小程序；可改期／退票（皆可能收費）；機位有限、售完為止",
+      "url": "https://www.vietjetair.com/zh-TW/news/hot-deals-1697696866958/double-day---super-sale-lets-vietjet-fares-from-just-$1-november-10th---12th-2026-1793854420877",
+      "src": "越捷航空繁體中文／英文官方活動頁（已開啟）",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_71c92b845844c6f6",
+      "notified_version": "cv_71c92b845844c6f6",
+      "first_seen_at": "2026-11-07T12:25:00+08:00",
+      "last_verified_at": "2026-11-07T12:25:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "星期不一致：原文「2026/11/10（一）」標（一），該日實際為星期二。保留原文，未改寫。",
+        "星期不一致：原文「2026/11/13（三）」標（三），該日實際為星期五。保留原文，未改寫。",
+        "end 欄為 2026-11-12，購買期間原文沒有同一個完整日期。兩邊都保留，未改寫。",
+        "購買期間同時出現多個時區，不自動解析開始或結束時間，因此不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    },
+    {
+      "id": "ze-itf-2026",
+      "vendor": "易斯達航空 Eastar Jet",
+      "name": "2026 線上旅展限定 韓國航線單程未稅 550 元起",
+      "crit": [
+        "② 旅展年度檔期",
+        "④ 廉航單程未稅 ≤ NT$1,000"
+      ],
+      "buy": "2026/11/04（三）09:00 – 2026/11/10（二）23:00",
+      "end": "2026-11-10",
+      "travel": "2026/11/05 – 2027/10/31",
+      "route": "桃園–清州 單程未稅 550 起；松山–金浦、桃園–仁川、桃園–釜山 750 起；桃園–濟州 1,050 起",
+      "cond": "單程未稅（另加稅金、燃油費）；須先登入易斯達官網會員才能購票；限量；託運行李規定以官網為準；11/06–11/07 旅展現場攤位有抽獎",
+      "url": "https://main.eastarjet.com/?lang=tw",
+      "src": "易斯達航空新聞稿（旅奇傳媒、七逗旅遊網、Yahoo 11/04）、NOWnews；官網有防爬驗證未能開啟活動頁",
+      "purchase_start": null,
+      "purchase_end": null,
+      "observe": false,
+      "content_version": "cv_6fdc6ede69dcdfac",
+      "notified_version": "cv_6fdc6ede69dcdfac",
+      "first_seen_at": "2026-11-04T12:18:00+08:00",
+      "last_verified_at": "2026-11-04T12:18:00+08:00",
+      "window": {
+        "purchase_start": null,
+        "purchase_end": null,
+        "basis": "unresolved"
+      },
+      "warnings": [
+        "購買期間有鐘點，但沒有寫時區，不自動下架。"
+      ],
+      "review_notes": [],
+      "revisions": []
+    }
+  ],
+  "excluded": [
+    {
+      "id": "exc-001",
+      "item": "亞洲航空 全航線 7–8 折起",
+      "reason": "已於 10/25 截止（清邁單程含稅 3,939 起，曾符合標準②①）",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-002",
+      "item": "亞洲航空 DRAGONSWIN 折 NT$500（10/27–11/1）",
+      "reason": "單筆滿 6,000 才折 500，約 8%，力度不足",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-003",
+      "item": "樂桃 國際線優惠（10/14–10/17）",
+      "reason": "已結束；最低沖繩單程未稅 1,280，也未達 ≤1,000",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-004",
+      "item": "台灣虎航 樂虎卡 999 起快閃（10/14–10/15）",
+      "reason": "已結束，且限樂虎卡持卡人；ITF 促銷尚未公布",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-005",
+      "item": "台灣虎航 × AFTEE 85 折（至 10/31）",
+      "reason": "支付工具優惠，舊用戶上限只折 NT$100",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-006",
+      "item": "LINE 旅遊年度旅展（虎航 3%、華航 1% 點數回饋）",
+      "reason": "只有點數回饋，非票價折扣",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-007",
+      "item": "華航「雙十一」84 折",
+      "reason": "僅限中國大陸出發飛台灣，不適用台灣出發",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-008",
+      "item": "燦星旅遊 線上旅展（10/16–11/9）",
+      "reason": "機票只有 1% 星旅券，主力是團體行程",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-009",
+      "item": "Trip.com 11 月機票優惠頁、LINE Bank 85 折碼",
+      "reason": "常態比價頁／小額優惠碼，無明確大型檔期",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-010",
+      "item": "捷星、酷航",
+      "reason": "官網未見台灣出發促銷；捷星桃園–大阪來回約 7,584 屬一般價",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-011",
+      "item": "KKday 雙11 立榮航空國內線 $1,111 起（松山–花蓮／馬祖／金門／澎湖，至 11/16）",
+      "reason": "國內線、非廉航，不屬監控範圍",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-012",
+      "item": "樂桃 日本出發冬季促銷（10/30–11/3）",
+      "reason": "僅日本出發，最低單程 ¥9,000（約 NT$1,856）",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-013",
+      "item": "台灣虎航 日本出發萬聖節促銷（10/30–10/31）",
+      "reason": "僅日本出發，已結束",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-014",
+      "item": "ANA 全日空 ITF 線上旅展（10/21–11/11，松山–羽田，2027/2/1–6/25 出發）",
+      "reason": "來回含稅約 15,132，與平常價差不大；亮點只有日本國內線延伸免費",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-015",
+      "item": "汶萊皇家航空 ITF 85 折起（至 11/20）",
+      "reason": "僅部落客資料、需汶萊轉機，力度一般",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-016",
+      "item": "飛遊網列的「虎航全航線 88 折」",
+      "reason": "是 2026/8/20–8/21 APP 慶祝活動，早已結束",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-017",
+      "item": "樂桃雙11快閃（搜尋結果）",
+      "reason": "查到的是 2025 年活動；2026 年尚未公布，列入觀察",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-018",
+      "item": "台灣虎航 2027 夏季航班第二波（11/03 10:00–11/04 23:59，1,599 起）",
+      "reason": "精選航線、最低 1,599 未達 ≤1,000，非全航線",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-019",
+      "item": "Trip.com 雙11 代碼 1111FLIGHT／1111ASIA（滿額折 500／滿萬折 1,111）",
+      "reason": "僅部落客列出、官方頁未見正式檔期，折扣幅度小",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-020",
+      "item": "Trinity Airways 直播特價（11/02–11/06）",
+      "reason": "韓國出發、韓國信用卡加碼，非台灣出發",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-021",
+      "item": "香港航空 周二激賞飛（11/03）",
+      "reason": "香港出發，不適用台灣出發",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-022",
+      "item": "日本航空 ITF 實體旅展限定 台北–沖繩經濟艙 3,200 起（11/06–11/09 現場）",
+      "reason": "非廉航，且未說明單程／來回與含稅與否，待旅展公布細節",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-023",
+      "item": "ANA × 樂桃 ITF 實體旅展 台日航線未稅 7,000 起",
+      "reason": "屬一般價位",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-024",
+      "item": "太陽富國航空 ITF 每人最高折 600",
+      "reason": "折扣幅度小",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-025",
+      "item": "Trip.com 越捷 東南亞度假優惠（台北–胡志明來回 4,623 起）",
+      "reason": "常態比價頁，非大型檔期",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-026",
+      "item": "卡塔爾航空 雙11（11/03–11/12，台北／高雄經香港、多哈）",
+      "reason": "官方頁標最高省約 20%、未公布台灣出發最低價；港媒多報香港出發 89 折，力度一般且路線複雜",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-027",
+      "item": "酷航 週二酷閃（至 11/07：仁川含稅 2,499、東京 3,999、札幌 4,299、新加坡 2,899）",
+      "reason": "常態週二閃購、含稅價遠高於廉航未稅 ≤1,000 標準",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-028",
+      "item": "Trip.com 雙11 代碼 1111FLIGHT／1111ASIA（部落客整理）",
+      "reason": "仍僅滿額小額折抵，非大型機票檔期；官方大促頁尚未公布破盤一口價",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-029",
+      "item": "樂桃航空『輕鬆飛！』台日航線單程未稅 1,280 起（2026/11/06 12:00–11/09 23:59，搭乘至約 2027/03/20）",
+      "reason": "精選台日航線非全航線大促；單程未稅 1,280 未達廉航 ≤ NT$1,000；官方頁已確認",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-030",
+      "item": "街口支付 × Trip.com 11.11線上旅展指定航點／3航線單程999元（11/11–11/14）",
+      "reason": "僅支付通路新聞、限少數航線且需街口支付；Trip.com 官方雙11破盤一口價大促頁尚未公布，暫列 pending_watch",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-031",
+      "item": "越捷「豪華飛行全包套餐」約 NT$109／¥77 起（至 2026/11/30）",
+      "reason": "官方簡中頁標明中國出發飛越南（北京／廣州／上海），非台灣出發",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-032",
+      "item": "捷星 日本國內線 Super Star Sale（單程約 ¥3,690 起）",
+      "reason": "僅日本國內線，不適用台灣出發",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-033",
+      "item": "酷航週二酷閃（至 11/07：仁川含稅約 2,499 等）",
+      "reason": "常態週二閃購、含稅價遠高於廉航未稅 ≤1,000 標準（延續先前排除）",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-034",
+      "item": "樂桃『輕鬆飛！』台日航線單程未稅 1,280 起（11/06–11/09）",
+      "reason": "延續排除：精選航線非全航線；未稅 1,280 未達 ≤ NT$1,000",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-035",
+      "item": "越捷 Deluxe 艙基礎票價 25% off（優惠碼 VJINT11，11/10–11/12）",
+      "reason": "僅 Deluxe 艙 25% 折扣，未達便宜 30% 以上門檻；另有同檔 NT$0 Eco 已列入提醒",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-036",
+      "item": "華航大陸出發雙11 84折飛台灣",
+      "reason": "僅限中國大陸出發，不適用台灣出發（延續排除）",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    },
+    {
+      "id": "exc-037",
+      "item": "捷星日本國內線 Super Star Sale",
+      "reason": "僅日本國內線，不適用台灣出發",
+      "recorded_at": null,
+      "source_note": "見附件 latest.json 的排除清單。各則寫入日沒有逐筆還原，不把整份清單標成 2026-11-07 的新查證。"
+    }
+  ],
+  "pending_watch": [
+    {
+      "id": "watch-2420d52f",
+      "text": "Trip.com 雙11 旅展（2026 年官方檔期尚未公布；去年 11/10–11/14，有單程 11 元、999 元機票）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-34322318",
+      "text": "樂桃 雙11 快閃（2026 年尚未公布；去年 11/06 12:00–11/11，台灣出發單程未稅 1,511 起）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-38400414",
+      "text": "Trip.com 雙11 旅展（2026 年尚未公布）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-3aabfe2b",
+      "text": "台灣虎航 ITF／雙11 促銷（截至 11/02 仍未公布；去年 11/05 尊榮虎、11/06–10 全員，單程未稅 799 起）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-74aea44f",
+      "text": "Trip.com 雙11 旅展（2026 年尚未公布；去年 11/10–11/14，有單程 11 元、999 元機票）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-76adf371",
+      "text": "台灣虎航 ITF／雙11 促銷（截至 10/31 仍未公布；去年 11/05 尊榮虎、11/06–10 全員，單程未稅 799 起）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-99eb7f35",
+      "text": "台灣虎航 ITF 促銷（尚未公布）",
+      "status": "closed",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": "2026-11-07 的 latest.json 已不再把這句放在現行觀察清單。原文保留，沒有刪除。"
+    },
+    {
+      "id": "watch-a0549884",
+      "text": "樂桃以「雙11」名義之快閃：目前僅見『輕鬆飛！』1,280 起（未達標準），尚未另見雙11破盤檔",
+      "status": "open",
+      "recorded_at": null,
+      "closed_at": null,
+      "note": ""
+    }
+  ],
+  "checks": [
+    {
+      "id": "2026-10-29T12:30:00+08:00",
+      "checked_at": "2026-10-29T12:30:00+08:00",
+      "summary": "2026-10-29 12:30 台北時間：檢查完成，無新的符合標準優惠（虎航 ITF 仍未公布；酷航週二酷閃 2,499 含稅、太陽富國 85 折、AirAsia Let's Taiwan 日本出發 8 折皆不符標準），未通知。",
+      "result": "no_change",
+      "sent": false,
+      "snapshot_html": null,
+      "snapshot_note": "未通知，沒有對應的 HTML。",
+      "timezone_explicit": true,
+      "candidates": [],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-10-30T12:25:00+08:00",
+      "checked_at": "2026-10-30T12:25:00+08:00",
+      "summary": "2026-10-30 12:25 台北時間：檢查完成，無新的符合標準優惠（虎航 ITF 仍未公布；樂桃國際線促銷 10/30–11/3 台灣出發最低桃園–沖繩單程未稅 ¥9,000 約 NT$1,856，未達標準；虎航萬聖節、樂桃日方促銷限日本出發；Trip.com 10/25–10/30 一口價已於前次檢查前開跑且 999 場次已過；泰瑞 85 折至 10/31、Starflyer 折價碼、Klook 旅展皆力度不足或非機票；SOAR 個別低價屬價格波動，交由降價監控 bot）。已提醒優惠無重大變動（越捷 10 條新航線 11/01 截止）。未通知。",
+      "result": "no_change",
+      "sent": false,
+      "snapshot_html": null,
+      "snapshot_note": "未通知，沒有對應的 HTML。",
+      "timezone_explicit": true,
+      "candidates": [],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-10-31T12:23:00+08:00",
+      "checked_at": "2026-10-31T12:23:00+08:00",
+      "summary": "2026-10-31 12:23 台北時間：發現新的符合標準優惠（易遊網「超心動$100貨公司」100元機票 11/04、雙11 大阪釜山 1,111 元 11/11，屬已提醒項目的重大更新），已產生 HTML 並通知。",
+      "result": "notified_historically",
+      "sent": true,
+      "snapshot_html": null,
+      "snapshot_note": "紀錄寫已產生 HTML，但附件沒有該檔，不補造。",
+      "timezone_explicit": true,
+      "candidates": [
+        {
+          "id": "ez-itf-2026",
+          "content_version": "cv_2939306e6524ed1d",
+          "change": "major_update"
+        }
+      ],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-01T12:30:00+08:00",
+      "checked_at": "2026-11-01T12:30:00+08:00",
+      "summary": "2026-11-01 12:30 檢查：無新的符合標準優惠（虎航 ITF／雙11、Trip.com 雙11 仍未公布；越捷 10 條新航線促銷今天 11/01 截止，已於先前提醒）。未產生 HTML、未通知。",
+      "result": "no_change",
+      "sent": false,
+      "snapshot_html": null,
+      "snapshot_note": "當日紀錄寫明未產生 HTML，未補造。此行沒有寫「台北時間」，時刻仍依同一份每日中午紀錄記為 +08:00，原文未改。",
+      "timezone_explicit": false,
+      "candidates": [],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-02T12:18:00+08:00",
+      "checked_at": "2026-11-02T12:18:00+08:00",
+      "summary": "2026-11-02 12:18 台北時間：發現新的符合標準優惠（澳門航空 ITF 澳門來回未稅 2,500 起至 11/30、酷航 ITF 至 11/12），已產生 HTML 並通知。ANA ITF、汶萊皇家力度不足未列；虎航、Trip.com、樂桃雙11 仍未公布。",
+      "result": "notified_historically",
+      "sent": true,
+      "snapshot_html": null,
+      "snapshot_note": "紀錄寫已產生 HTML，但附件沒有該檔，不補造。",
+      "timezone_explicit": true,
+      "candidates": [
+        {
+          "id": "nx-itf-2026",
+          "content_version": "cv_5246fc3075951bb3",
+          "change": "new"
+        },
+        {
+          "id": "tr-itf-2026",
+          "content_version": "cv_390782ad9906221f",
+          "change": "new"
+        }
+      ],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-03T12:20:00+08:00",
+      "checked_at": "2026-11-03T12:20:00+08:00",
+      "summary": "2026-11-03 12:20 台北時間：發現新的符合標準優惠（台灣虎航 ITF 全航線單程未稅 999 起 11/06–11/09、AirAsia ITF 至 11/08），已產生 HTML 並通知。虎航夏季第二波 1,599、Trip.com 雙11 小額碼未列。",
+      "result": "notified_historically",
+      "sent": true,
+      "snapshot_html": null,
+      "snapshot_note": "紀錄寫已產生 HTML，但附件沒有該檔，不補造。",
+      "timezone_explicit": true,
+      "candidates": [
+        {
+          "id": "ak-itf-2026",
+          "content_version": "cv_df43c76c3843ad7a",
+          "change": "new"
+        },
+        {
+          "id": "it-itf-2026",
+          "content_version": "cv_2d844519ee296469",
+          "change": "new"
+        }
+      ],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-04T12:18:00+08:00",
+      "checked_at": "2026-11-04T12:18:00+08:00",
+      "summary": "2026-11-04 12:18 台北時間：發現新的符合標準優惠（易斯達航空線上旅展 韓國線單程未稅 550 起，11/04–11/10），已產生 HTML 並通知。JAL 旅展沖繩 3,200、ANA×樂桃 7,000、太陽富國折 600 未列；樂桃、Trip.com 雙11 仍未公布。",
+      "result": "notified_historically",
+      "sent": true,
+      "snapshot_html": "snapshots/promos-20261104-1218.html",
+      "snapshot_note": "附件原件，不是用現在的模板重產。",
+      "timezone_explicit": true,
+      "candidates": [
+        {
+          "id": "ze-itf-2026",
+          "content_version": "cv_6fdc6ede69dcdfac",
+          "change": "new"
+        }
+      ],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-05T12:24:00+08:00",
+      "checked_at": "2026-11-05T12:24:00+08:00",
+      "summary": "2026-11-05 12:24 台北時間：檢查完成，無新的符合標準優惠（卡塔爾雙11 最高約省 20% 未列；酷航週二酷閃含稅 2,499 起不符；捷星、越捷無新促銷；樂桃、Trip.com 雙11 破盤檔仍未公布；已提醒優惠無重大變動——易斯達至 11/10、虎航 ITF 明天 11/06 10:00 開賣、AirAsia ITF 至 11/08）。未產生 HTML、未通知。",
+      "result": "no_change",
+      "sent": false,
+      "snapshot_html": null,
+      "snapshot_note": "當日紀錄寫明未產生 HTML，未補造。",
+      "timezone_explicit": true,
+      "candidates": [],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-06T12:15:00+08:00",
+      "checked_at": "2026-11-06T12:15:00+08:00",
+      "summary": "2026-11-06 12:15 台北時間：檢查完成，無新的符合標準優惠（樂桃「輕鬆飛！」單程未稅 1,280 未達 ≤1,000；街口×Trip.com 11/11–14 指定航線 999 僅通路新聞、官方破盤大促仍未公布；越捷豪華艙約 109 元為中國出發；捷星為日本國內線；酷航週二酷閃不符。已提醒優惠無重大變動——虎航 ITF 今日 10:00 已開賣至 11/09、易斯達至 11/10、AirAsia ITF 至 11/08、ITF 實體旅展今日開幕）。未產生 HTML、未通知。",
+      "result": "no_change",
+      "sent": false,
+      "snapshot_html": null,
+      "snapshot_note": "當日紀錄寫明未產生 HTML，未補造。",
+      "timezone_explicit": true,
+      "candidates": [],
+      "ignored_fields": []
+    },
+    {
+      "id": "2026-11-07T12:25:00+08:00",
+      "checked_at": "2026-11-07T12:25:00+08:00",
+      "summary": "2026-11-07 12:25 台北時間：發現新的符合標準優惠（越捷雙日台灣線單程未稅 NT$0 起 11/10–11/12；Trip.com 雙11 單程 $11／支付通路 $999，11/11–11/14），已產生 HTML 並通知。樂桃 1,280、越捷 Deluxe 25% 未列。",
+      "result": "notified_historically",
+      "sent": true,
+      "snapshot_html": "snapshots/promos-20261107-1225.html",
+      "snapshot_note": "附件原件，不是用現在的模板重產。",
+      "timezone_explicit": true,
+      "candidates": [
+        {
+          "id": "trip-1111-2026",
+          "content_version": "cv_02e4dd52766eb384",
+          "change": "new"
+        },
+        {
+          "id": "vj-doubleday-20261110",
+          "content_version": "cv_71c92b845844c6f6",
+          "change": "new"
+        }
+      ],
+      "ignored_fields": []
+    }
+  ],
+  "last_successful_check": {
+    "id": "2026-11-07T12:25:00+08:00",
+    "checked_at": "2026-11-07T12:25:00+08:00",
+    "summary": "2026-11-07 12:25 台北時間：發現新的符合標準優惠（越捷雙日台灣線單程未稅 NT$0 起 11/10–11/12；Trip.com 雙11 單程 $11／支付通路 $999，11/11–11/14），已產生 HTML 並通知。樂桃 1,280、越捷 Deluxe 25% 未列。",
+    "result": "notified_historically"
+  }
+}
